@@ -154,10 +154,11 @@ else
 KERNEL_NAME := Image
 endif
 
-BOARD_KERNEL_CMDLINE := init=/init androidboot.hardware=freescale androidboot.fbTileSupport=enable cma=800M@0x960M-0xe00M androidboot.primary_display=imx-drm firmware_class.path=/vendor/firmware transparent_hugepage=never
+BOARD_KERNEL_CMDLINE := init=/init androidboot.hardware=freescale androidboot.fbTileSupport=enable cma=800M@0x960M-0xe00M androidboot.primary_display=imx-drm firmware_class.path=/vendor/firmware transparent_hugepage=never androidboot.dm_verity=disabled
 
 # Default wificountrycode
 BOARD_KERNEL_CMDLINE += androidboot.wificountrycode=CN
+BOARD_KERNEL_CMDLINE += androidboot.dm_verity=disabled
 
 ifeq ($(PRODUCT_IMX_CAR),true)
 BOARD_KERNEL_CMDLINE += galcore.contiguousSize=33554432 video=HDMI-A-2:d
@@ -171,10 +172,10 @@ $(error "TARGET_USERIMAGES_USE_UBIFS and TARGET_USERIMAGES_USE_EXT4 config open 
 endif
 endif
 
-BOARD_PREBUILT_DTBOIMAGE := out/target/product/mek_8q/dtbo-imx8qm.img
+BOARD_PREBUILT_DTBOIMAGE := out/target/product/mek_8q/dtbo-imx8qxp.img
 ifeq ($(PRODUCT_IMX_CAR),true)
 AB_OTA_PARTITIONS += bootloader
-BOARD_OTA_BOOTLOADERIMAGE := out/target/product/mek_8q/bootloader-imx8qm.img
+BOARD_OTA_BOOTLOADERIMAGE := out/target/product/mek_8q/bootloader-imx8qxp.img
 ifeq ($(PRODUCT_IMX_CAR_M4),true)
 # imx8qm auto android
 TARGET_BOARD_DTS_CONFIG := imx8qm:fsl-imx8qm-mek-car.dtb
